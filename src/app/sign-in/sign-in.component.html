@@ -1,0 +1,20 @@
+<div class="full">
+    <div class="form-box">
+        <form (ngSubmit)="login(username.value,password.value)">    
+            <h3 class="text-center">Sign In</h3>
+            <div class="form-group mb-2">
+                <label>User Name</label>
+                <input type="text" class="form-control" #username
+                        name="username" placeholder="User Name" required>
+            </div>
+            <div class="form-group mb-3">
+                <label>Password</label>
+                <input type="password" class="form-control" #password
+                name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-success">Sign In</button>
+        </form>
+    </div>
+    
+ 
+</div>

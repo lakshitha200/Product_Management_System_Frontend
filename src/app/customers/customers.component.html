@@ -1,0 +1,45 @@
+
+<div class="my-container mx-4">
+  <h3 class="text-center my-2">Customers</h3>
+
+  <div class="customer-list mt-3">
+ 
+    <ng-container *ngFor="let customer of customers">
+      <div class="card  bg-dark text-white">
+        <div class="addmin-no position-absolute ">
+          <span>{{customer.cusNumber}}</span>
+        </div>
+        <input type="text" hidden [value]="customer.cid" #customerID>
+        <img  src="../../assets/img/Profile/{{customer.img}}" alt="Card image cap" class="p-2">
+        <div class="card-details">
+          <p class="card-text mx-2 my-2 d-flex gap-3" style="font-weight: 500;">
+            <span>{{customer.name}}</span>
+            <span class="username">&#64;{{customer.username.substring(2)}}</span>
+          </p>
+          <div  class="mx-2 my-2">
+            <a class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#id{{customer.cid}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Details
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="collapse" id="id{{customer.cid}}">
+        <h4>Customer Details</h4>
+        <div class="details-box">
+          <p><b>Customer Name:</b> {{customer.name}}</p>
+          <p><b>Customer Number:</b> {{customer.cusNumber}}</p>
+          <p><b>Username :</b> {{customer.username.substring(2)}}</p>
+          <p><b>Email :</b> {{customer.email}}</p>
+          <p><b>Location :</b> {{customer.location}}</p>
+          <p><b>Phone :</b> 0{{customer.phone}}</p>
+          
+          <button class="btn btn-danger btn-sm" (click)="getIdForDelete(customerID)">Delete</button>
+        </div>
+      </div>
+    </ng-container>
+    
+  </div>
+  
+
+
+</div>

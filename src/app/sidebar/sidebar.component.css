@@ -1,0 +1,56 @@
+.sidebar {
+    z-index: 80;
+    box-shadow: 1px 2px 7px 3px #858585;
+}
+.sidebar .box{
+    width: 250px;
+    height: 100vh;
+    background-color: rgb(253, 225, 225) !important;
+}
+li span{
+    padding-left: 10px;
+}
+.active{
+    /* background-color: #5729ce !important; */
+    background-color: red !important;
+}
+
+.fa-circle{
+    font-size:8px;
+    margin-left: 5px;
+    margin-bottom: 8px;
+    color: #4cbb17;
+}
+.my-profile{
+    background-color: red !important;
+    padding: 8px;
+    border-radius: 5px;
+}
+.dropdown-item{
+    cursor: pointer;
+}
+.dropdown-item:hover{
+    background-color: red !important;
+    color: #fff;
+}
+
+
+@media screen and (max-width:830px) {
+    .sidebar span, .sidebar .name{
+        display: none;
+    }
+    .sidebar .box{
+        width: 60px;
+    }
+    
+    .fa-circle{
+        position: absolute;
+        top: 6px;
+        right:5px;
+        border: 3px solid red;
+        border-radius: 50%;
+    }
+    
+}
+
+

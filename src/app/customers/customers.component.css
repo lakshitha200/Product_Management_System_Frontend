@@ -1,0 +1,91 @@
+
+
+.card{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 2px solid #15f345;
+
+    
+}
+.card-details{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+img{
+    width: 70px;
+}
+
+.addmin-no{
+    background-color: #10c938;
+    color: #fff;
+    padding: 1px 3px;
+    font-size: 13px;
+}
+
+.details-box{
+    background-color: #d3fcdc;
+    padding: 20px;
+    border: 2px solid #10c938;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.username{
+    background-color: green !important;
+    color: #fff !important;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+.btn-primary{
+    background-color: #10c938;
+    outline: none;
+    border: none;
+}
+.btn-primary:hover{
+    background-color: #10c938;
+}
+
+.btn-danger{
+    background-color:red;
+}
+.btn-danger:hover{
+    background-color:rgb(150, 3, 3);
+}
+
+
+.btn{
+    box-shadow: none;
+}
+.d-flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px !important;
+}
+
+@media screen and (max-width:675px){
+    .card-details span{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:550px){
+    img{
+        width: 90px;
+        height: 90px;
+    }
+    .btn-primary{
+        float: right;
+    }
+    .username{ 
+        font-size: 12px !important;
+    }
+    .details-box p{
+        font-size: 13px;
+    }
+}

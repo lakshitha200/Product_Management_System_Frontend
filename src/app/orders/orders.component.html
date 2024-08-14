@@ -1,0 +1,69 @@
+<div class="my-container mx-4">
+    <h3 class="text-center my-2">Orders</h3>
+
+    <div class="order-list mt-3">
+   
+      <ng-container *ngFor="let order of orders">
+
+        <div class="card position-relative">
+          <div class="addmin-no position-absolute">
+            <span>#{{order.orderNumber}}</span>
+          </div>
+          <input type="text" hidden [value]="order.oid" #orderID>
+
+          <img  [src]="order.product.images[0].path" alt="Card image cap">
+          <div class="card-details">
+            <div class="mx-4 my-2">
+              <h5 class="card-title"></h5>
+              <p class="card-text">
+                <b  class="text-white"><i class="fa-solid fa-xmark"></i> {{order.quantity}}</b> 
+                <b class="text-info"> {{order.product.name}}</b> 
+                <span class="orderState" 
+                [ngStyle]="{'backgroundColor':order.orderState=='pending'?'#ffa807':'green'}">{{order.orderState}}</span>
+                <!-- | <b>{{order.orderDate}}</b> | <b style="color: orangered;">Rs.{{(order.product.price - (order.product.price * order.product.discount)/100)* order.quantity}}</b> -->
+              </p>
+              
+            </div>
+            <div  class="mx-4 my-2">
+              <a class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#id{{order.oid}}" 
+              role="button" aria-expanded="false" aria-controls="collapseExample">
+                Details
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="collapse" id="id{{order.oid}}">
+          <h4>Order Details</h4>
+          <div class="details-box">
+
+            <h6 class="card-title bg-primary text-white p-2 d-flex gap-1 flex-wrap"> 
+              <div> <span>Order Number</span> : {{order.orderNumber}} | </div>
+              <div> <span>Date</span> : {{order.orderDate}} | </div>
+              <div> <span>Quantity</span> : {{order.quantity}} | </div>
+              <div> <span>Location</span> : {{order.customer.location}}</div>
+            </h6>
+
+            <p><b>Product Name:</b> {{order.product.name}}</p>
+            <p><b>Product Number:</b> {{order.product.number}}</p>
+            <p style="color: orangered;" *ngIf="order.product.discountAvailable"><b>Discount:</b> {{order.product.discount}}%</p>
+            <p style="color: orangered;">
+              <b>Total Price:</b> {{order.product.newPrice * order.quantity | currency:'LKR ':'code'}}
+            </p>
+            <p><b>1 Product Price:</b> {{order.product.newPrice | currency:'LKR ':'code'}}</p>
+            <p><b>Customer Name:</b> {{order.customer.name}}</p>
+            <p><b>Customer Number:</b> {{order.customer.cusNumber}}</p>
+            <p><b>Customer Address:</b> {{order.customer.location}}</p>
+            <hr>
+            <p><b>Set Order State</b></p>
+            <button class="btn btn-success btn-sm" (click)="delivered(order.oid)">Delivered</button>
+            <button class="btn btn-danger btn-sm mx-1" (click)="cancel()">Cancel</button>
+           
+          </div>
+        </div>
+      </ng-container>
+      
+    </div>
+    
+
+
+</div>

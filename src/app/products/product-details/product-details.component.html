@@ -1,0 +1,69 @@
+
+<div class="container">
+    <div class="details-box">
+        <h3 class="text-center">{{ product.name}}</h3>
+        <div class="details w-100 mt-4 text-white">
+            <div>
+                <ng-container *ngFor="let i of product.images ">
+                    <img class="main-img" [src]="i.path" *ngIf="product.images.indexOf(i)==0">
+                </ng-container>
+            </div>
+            <div class="main-details">
+                <h4 style="font-weight:500;">{{product.name}}</h4>
+                <div class="" [ngStyle]="{color:product.discountAvailable ? 'rgb(255, 155, 6)' : 'white'} ">
+                    <p style="font-weight: 550;margin-bottom: 0;">{{product.newPrice | currency:'LKR ':'code'}}</p>
+                    <p style="font-weight: 500;text-decoration: line-through; font-size: 12px;" 
+                        *ngIf="product.discountAvailable" class="mt-1">{{ product.price | currency:'LKR ':'code'}}</p>
+                </div>
+                <p class="bg-warning w-100 text-center text-dark" style="font-weight: 600;"
+                    *ngIf="product.discountAvailable">Discount: {{ product.discount}}%</p>
+                <p style="font-weight: 600;">Stock : {{ product.stock}}</p>
+
+                <div class="colours" >
+                    <p>Colours : </p>
+                    <ng-container *ngFor="let c of product.colors">
+                        <div [ngStyle]="{'backgroundColor':c.name}"></div>
+                    </ng-container>
+                </div>
+    
+                <div class="update-delete d-flex gap-3 ">
+                    <a class="btn btn-success btn-sm" routerLink="./Update-product/{{product.id}}">Update</a>
+                    <button class="btn btn-danger btn-sm " >Delete</button>
+                </div>
+            </div>
+            
+            <ul class="specifications p-4">
+                <h6 class="bg-info text-dark text-center py-1"><b>SPECIFICATIONS</b></h6>
+                <li>Model : <span>{{ product.model}}</span></li>
+                <li>Display : <span>{{ product.specifications.display}}</span></li>
+                <li *ngIf="product.specifications.chipset">Chipset : <span>{{ product.specifications.chipset}}</span></li>
+                <li *ngIf="product.specifications.processor">Processor : <span>{{ product.specifications.processor}}</span></li>
+                <li *ngIf="product.specifications.ram">Ram : <span>{{ product.specifications.ram}}</span></li>
+                <li  *ngIf="product.specifications.battery">Battery : <span>{{ product.specifications.battery}}</span></li>
+                <li *ngIf="product.specifications.technology">Technology : <span>{{ product.specifications.technology}}</span></li>
+                <li *ngIf="product.specifications.graphics">Graphics : <span>{{ product.specifications.graphics}}</span></li>
+                <li *ngIf="product.specifications.storage">Storage : <span>{{ product.specifications.storage}}</span></li>
+                <li>Stock : <span>{{ product.stock}}</span></li>
+                <li *ngIf="product.specifications.camera">Camera : <span>{{ product.specifications.camera}}</span></li>
+                <li *ngIf="product.specifications.size">Screen Size : <span>{{ product.specifications.size}}</span></li>
+                <!-- <li *ngIf="product.resolution">Resolution : <span>{{ product.resolution}}</span></li> -->
+                <li *ngIf="product.specifications.features">Features : <span>{{ product.specifications.features}}</span></li>
+            </ul>
+        
+        </div>
+        
+        <div class="all-images mt-3">
+            <div>
+                <ng-container *ngFor="let i of product.images ">
+                    <img [src]="i.path">
+                </ng-container>
+            </div>
+        </div>
+    
+    </div>
+    
+</div>
+
+
+
+

@@ -1,0 +1,8 @@
+
+.navbar{
+    padding-left:20px;
+    /* background: #212529; */
+    background-color: red !important;
+    width: 100%;
+    z-index: 100;
+}

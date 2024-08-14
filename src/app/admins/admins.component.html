@@ -1,0 +1,70 @@
+
+<div class="admins">
+    <h3 class="text-center text-white pt-4">Admins</h3>
+    <div class="addnew my-3 mx-3">
+        <a [routerLink]="'Add-admin'" class="btn btn-danger" *ngIf="ActiveAdmin.roles == 'ROLE_ADMIN_MANAGER'">Add New Admin</a>
+    </div>
+
+  
+              <!-- <div class="m-3" *ngIf="ActiveAdmin.roles == 'ROLE_ADMIN_MANAGER'">
+                <div class="d-flex gap-2 flex-wrap" >
+                    <a [routerLink]="'Update-admin/'+admin.id" class="btn btn-success">Update</a>
+                    <input hidden #getId value="{{admin.id}}">
+                    <a class="btn btn-danger" (click)="getIdForDelete(getId)">Delete</a>
+                </div>
+              </div> -->
+
+<div class="admindata mx-2">
+  <table>
+    <thead>
+      <tr class="text-center text-white">
+        <!-- <th scope="col">Image</th> -->
+        <th scope="col">Number</th>
+        <th scope="col">Name</th>
+        <th scope="col">Username</th>
+        <th>Email</th>
+        <th scope="col">Phone</th>
+        <th >Position</th>
+        <th >Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let admin of admins">
+        <tr class="text-center"  
+          [ngStyle]="{'backgroundColor':admin.username==USERNAME?'#9dff00':'rgba(255, 255, 255, 0.1)',
+          'color':admin.username==USERNAME?'black':'white'}">
+            <div class="overlay"></div>
+            <!-- <th ><img src="../../assets/img/Profile/{{admin.img}}" alt=""></th> -->
+            <td ><span class="number" 
+               [ngStyle]="{'backgroundColor':admin.username==USERNAME?'black':'yellow',
+               'color':admin.username==USERNAME?'white':'black'}">#{{admin.number}}
+              </span>
+            </td>
+            <td>{{admin.name}}</td>
+            <td  [ngStyle]="{'color':admin.username==USERNAME?'black':'yellow'}">&#64;{{admin.username.substring(2)}}</td>
+            <td>{{admin.email}}</td>
+            <td>0{{admin.phone}}</td>
+
+            <td><span class="role" 
+              [ngStyle]="{'backgroundColor':admin.username==USERNAME?'black':'orangered'}">
+                {{admin.roles=='ROLE_ADMIN_MANAGER'?'Admin_Manager':'Admin'}}
+              </span>
+            </td>
+
+            <td class="d-flex gap-1 justify-content-center">
+              <a [routerLink]="'Update-admin/'+admin.id" class="btn btn-primary btn-sm"  *ngIf="admin.roles=='ROLE_ADMIN' || admin.username==USERNAME">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </a>
+              <input hidden #getId value="{{admin.id}}">
+              <a class="btn btn-danger btn-sm" (click)="getIdForDelete(getId)"
+              *ngIf="admin.roles=='ROLE_ADMIN' || admin.username==USERNAME"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        
+        </tr>
+      </ng-container>
+      
+     
+    </tbody>
+  </table>
+</div>
+

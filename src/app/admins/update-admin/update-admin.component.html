@@ -1,0 +1,72 @@
+<div class="container bg-light">
+    <div class="form-box ">
+        <h3 class="my-3 mx-2">Update Admin</h3>
+
+        <form (ngSubmit)="onSubmit()" class="border rounded bg-white p-3">
+            <div class="d-flex gap-3">
+                
+                <div class="form-group mb-2 w-100">
+                    <label class="boldLable">Name</label> 
+                    <input type="text" class="form-control"
+                            name="name" placeholder="Name" [(ngModel)]="admin.name" required>
+                </div>
+                <div class="form-group mb-2 w-100">
+                    <label class="boldLable">User Name</label> 
+                    <input type="text" class="form-control"
+                            name="username" placeholder="Username" [(ngModel)]="admin.username" required>
+    
+                </div>
+            </div>
+            <div class="d-flex gap-3">
+                <div class="form-group mb-2 w-100">
+                    <label class="boldLable">Email</label>
+                    <input type="email" class="form-control"
+                            name="email" placeholder="Email" [(ngModel)]="admin.email" required>
+    
+                </div>
+                <!-- <div class="form-group mb-2 w-100">
+                    <label class="boldLable">Password</label>
+                    <input type="password" class="form-control"
+                            name="password" placeholder="Password" [(ngModel)]="admin.password"  required>
+    
+                </div> -->
+                
+            </div>
+            <div class="d-flex gap-3">
+                <div class="form-group mb-2 w-100">
+                    <label class="boldLable">Role</label>
+                    <select class="form-select" name="roles" [(ngModel)]="admin.roles">
+                        <option value="ROLE_ADMIN_MANAGER">Manager</option>
+                        <option value="ROLE_ADMIN">Admin</option>
+                    </select>
+                </div>
+                
+                <div class="form-group mb-2 w-100">
+                    <label class="boldLable">Admin Number</label>
+                   
+                        <input type="number" class="form-control" disabled
+                            name="number" placeholder="Admin Number" [(ngModel)]="admin.number" required>
+
+                </div>
+            </div>
+            <div class="d-flex gap-3">
+                
+                <div class="form-group mb-2 w-100">
+                    <label class="boldLable">Phone No</label> 
+                    <input type="number" class="form-control"
+                            name="phone" placeholder="Phone No" [(ngModel)]="admin.phone" required>
+                </div>
+                <div class="form-group mb-2 w-100">
+                    <label class="boldLable">Propile Image</label> 
+                    <input type="file" class="form-control"
+                    name="img" [(ngModel)]="admin.img" >
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success my-3 ">Update</button>
+            <button type="reset" class="btn btn-danger my-3 mx-2">Reset</button>
+        </form>
+
+    </div>
+</div>
+
+   

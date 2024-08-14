@@ -1,0 +1,52 @@
+<!-- sidebar -->
+<div class="sidebar position-fixed">
+    <div class="box d-flex flex-column flex-shrink-0 p-1 bg-light">
+    
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto mt-4">
+    
+        <li>
+            <a routerLink="Dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-link link-dark">
+                <i class="fa-solid fa-gauge"></i>
+            <span>Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="'Orders'" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" class="nav-link link-dark">
+                <i class="fa-solid fa-table"></i>
+            <span>Orders</span>
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="'Product-list'" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" class="nav-link link-dark">
+                <i class="fa-solid fa-cubes-stacked"></i>
+            <span>Products</span>
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="'Customers'" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" class="nav-link link-dark">
+                <i class="fa-solid fa-user-tie"></i>
+            <span>Customers</span>
+            </a>
+        </li>
+        </ul>
+
+
+        <hr>
+        <div class="my-profile dropdown">
+        <a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" >
+            <img [src]="imgUrl" alt="" width="32" height="32" class="rounded-circle me-2">
+            <span class="text-white">{{name}}</span>
+            <div class="active-dot" *ngIf="name != 'Sign In'"><i class="fa-solid fa-circle"></i></div>
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" *ngIf="name != 'Sign In'">
+            <li><a class="dropdown-item" routerLink="/Admins">View All Admins</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+

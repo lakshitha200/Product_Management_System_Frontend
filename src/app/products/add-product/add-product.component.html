@@ -1,0 +1,373 @@
+<div class="container bg-light">
+    <div class="form-box ">
+        <h3 class="my-3 mx-2">Create New Product</h3>
+
+        <form (ngSubmit)="onSubmit()" class="border rounded bg-white p-3">
+            
+            <!-- -----------------Main------------------------------------- -->
+            <div class="main-details">
+                <h5 class="mt-3 bg-dark text-center text-white py-1">Details</h5>
+                <div class="d-flex gap-3">
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Model</label>
+                        <input type="text" class="form-control" 
+                                name="model" placeholder="Product Model" [(ngModel)]="product.model" required>
+        
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Brand</label>
+                        <input type="text" class="form-control" 
+                                name="brand" placeholder="Product Brand" [(ngModel)]="product.brand" required>
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Number</label>
+                        <input type="number" class="form-control"
+                                name="number" placeholder="Product Number" [(ngModel)]="product.number" required>
+                        <button type="button" class="btn btn-sm btn-primary" (click)="getNumber()">Get Nuber</button>
+                    </div>
+                </div>
+                <!-- <div>Name: <span>{{model}}</span></div> -->
+
+                <div class="d-flex gap-3">
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Price</label>
+                        <input type="number" class="form-control"
+                                name="price" placeholder="Price" [(ngModel)]="product.price" required>
+        
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Stock</label>
+                        <input type="number" class="form-control"
+                                name="stock" placeholder="Stock" [(ngModel)]="product.stock" required>
+        
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3">
+                    <div class="form-group mb-3">
+                        <label class="boldLable">Discount Available ? (Optional)</label><br>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input"  name="discountAvailable" 
+                             [(ngModel)]="product.discountAvailable" #open (change)="getValue(open)"> Yes
+                        </div>
+                    </div>
+                
+                    
+                    <div class="form-group mb-2 w-100" *ngIf="discountOpen">
+                        <label class="boldLable">Discount</label>
+                        <input type="number" class="form-control"
+                                name="discount" placeholder="Discount" [(ngModel)]="product.discount" required>
+                    </div>
+
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Product Category</label> 
+                        <select class="form-select bg-primary text-white" name="category" [(ngModel)]="product.type" required #type (change)="onSelectChange(type)">
+                            <option value="phone" >Phone</option>
+                            <option value="laptop" >Laptop</option>
+                            <option value="tab" >Tablet</option>
+                            <option value="tv" >Tv</option>
+                            <option value="watch" >Watch</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+ 
+            <!------------------------------ specifications ------------------>
+            <!-- Phones -->
+            <div *ngIf="selectType=='phone'">
+                <h5 class="mt-3 bg-dark text-center text-white py-1">Specifications</h5>
+
+                <div class="d-flex gap-3" >
+                    
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Display</label>
+                        <input type="text" class="form-control"
+                                name="display" placeholder="Display" [(ngModel)]="pSpecifications.display" required>
+                    </div>
+
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Battery</label>
+                        <input type="text" class="form-control"
+                                name="battery" placeholder="Battery" [(ngModel)]="pSpecifications.battery" required>
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Ram</label> 
+                        <select class="form-select" name="ram" [(ngModel)]="pSpecifications.ram" required>
+                            <option value="4GB">4GB</option>
+                            <option value="6GB">6GB</option>
+                            <option value="8GB">8GB</option>
+                            <option value="12GB">12GB</option>
+                            <option value="16GB">16GB</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Storage</label> 
+                        <select class="form-select" name="storage" [(ngModel)]="pSpecifications.storage" required>
+                            <option value="32GB">32GB</option>
+                            <option value="64GB">64GB</option>
+                            <option value="128GB">128GB</option>
+                            <option value="256GB">256GB</option>
+                            <option value="512GB">512GB</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3" >
+            
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Chipset</label>
+                        <input type="text" class="form-control"
+                                name="chipset" placeholder="Chipset" [(ngModel)]="pSpecifications.chipset" required>
+                    </div>
+
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Technology</label>
+                        <input type="text" class="form-control"
+                                name="technology" placeholder="Technology" [(ngModel)]="pSpecifications.technology" required>
+                    </div>
+                    
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Camera</label>
+                        <input type="text" class="form-control"
+                                name="camera" placeholder="Camera" [(ngModel)]="pSpecifications.camera" required>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- laptops -->
+            <div *ngIf="selectType=='laptop'">
+                <h5 class="mt-3 bg-dark text-center text-white py-1">Specifications</h5>
+
+                <div class="d-flex gap-3" >
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Display</label>
+                        <input type="text" class="form-control"
+                                name="display" placeholder="Display" [(ngModel)]="pSpecifications.display" required>
+                    </div>
+
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Battery Life</label>
+                        <input type="text" class="form-control"
+                                name="battery" placeholder="Battery" [(ngModel)]="pSpecifications.battery" required>
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Ram</label> 
+                        <select class="form-select" name="ram" [(ngModel)]="pSpecifications.ram" required>
+                            <option value="4GB">4GB</option>
+                            <option value="6GB">6GB</option>
+                            <option value="8GB">8GB</option>
+                            <option value="12GB">12GB</option>
+                            <option value="16GB">16GB</option>
+                            <option value="32GB">32GB</option>
+                            <option value="64GB">64GB</option>
+                            <option value="128GB">128GB</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Storage</label> 
+                        <select class="form-select" name="storage" [(ngModel)]="pSpecifications.storage" required>
+                            <option value="250GB SSD">250GB SSD</option>
+                            <option value="500GB">500GB</option>
+                            <option value="500GB SSD">500GB SSD</option>
+                            <option value="1Tb">1Tb</option>
+                            <option value="1Tb SSD">1Tb SSD</option>
+                            <option value="2TB">2TB</option>
+                            <option value="2TB SSD">2TB SSD</option>
+                            <option value="3TB">3TB</option>
+                            <option value="3TB SSD">3TB SSD</option>
+                            <option value="4TB">4TB</option>
+                            <option value="4TB">4TB</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3" >
+            
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Processor</label>
+                        <input type="text" class="form-control"
+                                name="processor" placeholder="Processor" [(ngModel)]="pSpecifications.processor" required>
+                    </div>
+
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Graphics</label>
+                        <input type="text" class="form-control"
+                                name="graphics" placeholder="Graphics" [(ngModel)]="pSpecifications.graphics" required>
+                    </div>
+                    
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Features</label>
+                        <input type="text" class="form-control"
+                                name="features" placeholder="Features" [(ngModel)]="pSpecifications.features" required>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Tab -->
+            <div *ngIf="selectType=='tab'">
+                <h5 class="mt-3 bg-dark text-center text-white py-1">Specifications</h5>
+
+                <div class="d-flex gap-3" >
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Display</label>
+                        <input type="text" class="form-control"
+                                name="display" placeholder="Display" [(ngModel)]="pSpecifications.display" required>
+                    </div>
+
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Battery</label>
+                        <input type="text" class="form-control"
+                                name="battery" placeholder="Battery" [(ngModel)]="pSpecifications.battery" required>
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Ram</label> 
+                        <select class="form-select" name="ram" [(ngModel)]="pSpecifications.ram" required>
+                            <option value="4GB">4GB</option>
+                            <option value="6GB">6GB</option>
+                            <option value="8GB">8GB</option>
+                            <option value="12GB">12GB</option>
+                            <option value="16GB">16GB</option>
+                            <option value="32GB">32GB</option>
+                            <option value="64GB">64GB</option>
+                            <option value="128GB">128GB</option>
+                        </select>
+                    </div>
+                   
+                </div>
+
+                <div class="d-flex gap-3" >
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Storage</label> 
+                        <select class="form-select" name="storage" [(ngModel)]="pSpecifications.storage" required>                          
+                            <option value="32GB ">32GB </option>
+                            <option value="64GB ">64GB </option>
+                            <option value="128GB ">128GB </option>
+                            <option value="256GB ">256GB </option>
+                            <option value="512GB">512GB</option>
+                            <option value="1Tb">1Tb</option>
+                            <option value="2TB">2TB</option>
+             
+                        </select>
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Camera</label>
+                        <input type="text" class="form-control"
+                                name="camera" placeholder="Camera" [(ngModel)]="pSpecifications.camera" required>
+                    </div>
+                    
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Features</label>
+                        <input type="text" class="form-control"
+                                name="features" placeholder="Features" [(ngModel)]="pSpecifications.features" required>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Tab -->
+            <div *ngIf="selectType=='tv'">
+                <h5 class="mt-3 bg-dark text-center text-white py-1">Specifications</h5>
+
+                <div class="d-flex gap-3" >
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Display</label>
+                        <input type="text" class="form-control"
+                                name="display" placeholder="Display" [(ngModel)]="pSpecifications.display" required>
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Screen Size</label> 
+                        <select class="form-select" name="size" [(ngModel)]="pSpecifications.size" required>
+                            <option value="26-inch">26-inch</option>
+                            <option value="32-inch">32-inch</option>
+                            <option value="48-inch">48-inch</option>
+                            <option value="55-inch">55-inch</option>
+                            <option value="65-inch">65-inch</option>
+                            <option value="75-inch">75-inch</option>
+                            <option value="85-inch">85-inch</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Features</label>
+                        <input type="text" class="form-control"
+                                name="features" placeholder="Features" [(ngModel)]="pSpecifications.features" required>
+                    </div>
+                   
+                </div>
+
+            </div>
+
+            <!-- Watch -->
+            <div *ngIf="selectType=='watch'">
+                <h5 class="mt-3 bg-dark text-center text-white py-1">Specifications</h5>
+
+                <div class="d-flex gap-3" >
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Display</label>
+                        <input type="text" class="form-control"
+                                name="display" placeholder="Display" [(ngModel)]="pSpecifications.display" required>
+                    </div>
+
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Battery</label>
+                        <input type="text" class="form-control"
+                                name="battery" placeholder="Battery" [(ngModel)]="pSpecifications.battery" required>
+                    </div>
+                    <div class="form-group mb-2 w-100">
+                        <label class="boldLable">Features</label>
+                        <input type="text" class="form-control"
+                                name="features" placeholder="Features" [(ngModel)]="pSpecifications.features" required>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <!------------------------------ Images ------------------>
+            <div class="images mt-3">
+                <h5 class="mt-3 bg-dark text-center text-white py-1">Images</h5>
+
+                <div >
+                    <label class="boldLable">Image</label>
+                    <div class="form-group mb-2 w-100 d-flex gap-3 ">
+                        <input type="text" class="form-control" #img
+                                name="path" placeholder="Image Link" required>
+                        <button type="button" class="btn btn-primary" (click)="addImage(img)">Add</button>
+                    </div> 
+                    <div *ngFor="let i of imagesArray" class="result-box">
+                        <span  class="results">{{i.path}} <i class="fa-solid fa-circle-xmark" (click)="removeI(i)"></i></span>
+                    </div>         
+                 
+                </div>
+               
+            </div>
+       
+                      <!------------------------------ Colours ------------------>
+            <div class="colours">
+                <h5 class="mt-3 bg-dark text-center text-white py-1">Colours</h5>
+                <div >
+                    <label class="boldLable">Colour</label>
+                    <div class="form-group mb-2 w-100 d-flex gap-3 ">
+                        <input type="text" class="form-control" #color
+                                name="colourName" placeholder="Colour" required>
+                        <button type="button" class="btn btn-primary" (click)="addColours(color)">Add</button>
+                    </div> 
+                    <div *ngFor="let c of coloursArray" class="result-box">
+                        <span  class="results">{{c.name}} <i class="fa-solid fa-circle-xmark" (click)="removeC(c)"></i></span>
+                    </div>         
+                 
+                </div>
+            </div>
+            
+                
+           
+            <button type="submit" class="btn btn-warning my-3 " [disabled]="!selectType">Submit</button>
+            <button type="reset" class="btn btn-danger my-3 mx-2">Reset</button> 
+        </form>
+    </div>
+
+
+
+
+</div>

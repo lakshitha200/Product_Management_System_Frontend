@@ -1,0 +1,40 @@
+<div class="dashboard mt-2">
+    <div class="admin-box p-3">
+        <div class="text-center my-3"><img [src]="imgUrl"></div>
+        <h2 class="text-center" style="color: #9dff00;">{{ActiveAdmin.name}}</h2>
+        <h6 class="username">&#64;{{ActiveAdmin.username.substring(2)}}</h6>
+        <h5 class="text-center text-white">Welcome to Product Management System, {{ActiveAdmin.name}}.</h5>
+        <div class="text-center mt-4 mb-2">
+            <a routerLink="/Admins" class="btn mb-2 text-white" style="background-color: red;">View All Admins</a>
+            <a type="button" class="btn btn-info mb-2" [routerLink]="'/Admins/Add-admin'"
+                *ngIf="ActiveAdmin.roles == 'ROLE_ADMIN_MANAGER'">Add Admin
+            </a>
+        </div>
+    </div>
+    <div class="others">
+        <div class="c-box">
+
+            <h5 class="text-info">  <i class="fa-solid fa-table"></i> Orders</h5>
+            <div class="text-white mb-1">
+                <span>Orders Count: <span class="light">{{orders.length}}</span></span> <br>
+                <span>In Stock: <span class="light">{{orderState.length}}</span></span>
+            </div>
+            <a [routerLink]="'/Orders'" type="button" class="btn btn-info" >Orders</a>
+        </div>
+        <div class="c-box">
+            <h5 class="text-warning"> <i class="fa-solid fa-cubes-stacked"></i> Products</h5>
+            <div class="text-white mb-1">
+                <span>Product Count: <span class="light">{{products.length}}</span></span> <br>
+                <span>In Stock: <span class="light">{{inStock.length}}</span></span>
+            </div>
+            <a [routerLink]="'/Product-list'" type="button" class="btn btn-warning">Products</a>
+        </div>
+        <div class="c-box">
+            <h5 style="color: #39e75f;"><i class="fa-solid fa-user-tie"></i> Customers</h5>
+            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt perferendis aperiam nulla</p>
+            <p class="text-white">Customers :{{customers.length}}</p>
+            <a [routerLink]="'/Customers'" type="button" class="btn" style="background-color: #39e75f;">Customers</a>
+        </div>
+    </div>
+    
+</div>

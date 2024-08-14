@@ -1,0 +1,93 @@
+<div class="product">
+    <h3 class="text-center my-2">Product List</h3>
+    <div class="details-banner">
+        <div class="blcak-box text-white mt-3">
+            <div>
+                <p>Product Count : <span class="lightGreen">{{products.length}}</span></p>
+                <p>Discounted Items : <span class="lightGreen">{{discountedItems}}</span></p>
+                
+            </div>
+            <div>
+                <p>In Stock : <span class="lightGreen">{{inStock}}</span></p>
+                <p>Out of Stock : <span class="lightGreen">{{outStock}}</span></p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="search-bar my-3 ">
+        <input type="search" name="search" placeholder="Search Products" class="px-2">
+        <button class="btn btn-dark mx-1">Search</button>
+    </div>
+    <div class="addnew my-2 mx-2">
+        <a [routerLink]="'Add-product'" class="btn btn-warning">Add New Product</a>
+       
+    </div>
+
+    <div class="product-list my-3">
+        <div class="products" >
+            <ng-container *ngFor="let product of products">
+                
+                <div class="card">
+                    <a >
+                        <div class="trash position-absolute top-0 end-0 p-2" (click)="getIdForDelete(getId)">
+                            <i class="text-white fa-solid fa-trash"></i>
+                        </div>
+                    </a>
+                    <a  [routerLink]="'Product-details/'+ product.id"  >
+                        <div class="offer position-absolute top-0 end-1 px-2 py-1" *ngIf="product.discountAvailable">
+                            <span>{{product.discount}} %</span>
+                        </div>
+                        <input hidden #getId value="{{product.id}}">
+                        
+                        
+                        <ng-container *ngFor="let i of product.images ">
+                            <img class="card-img-top" [src]="i.path" *ngIf="product.images.indexOf(i)==0">
+                        </ng-container>
+    
+                        <div class="card-body text-white">
+                          <h5 class="card-title">{{product.name}}</h5>
+                          <h6 style="color: rgb(255, 155, 6);" *ngIf="product.discountAvailable"> {{product.newPrice | currency:'LKR ':'code'}}</h6>
+                          <p class="card-text" [ngClass]="{'strike': product.discountAvailable}"> {{product.price | currency:'LKR ':'code'}}</p>
+                        </div>
+                    </a>
+                    
+                </div>    
+            </ng-container>
+        </div>
+
+    </div>
+
+ </div>
+
+
+
+ 
+    <!-- <div class="product-list my-3 mx-2">
+        <div class="products" >
+        
+                <div class="card">
+                    <div class="offer bg-warning position-absolute top-0 end-1 px-2 py-1">
+                        <span>Offer</span>
+                    </div>
+                    <a>
+                        
+                        <div class="trash position-absolute top-0 end-0 p-2">
+                            <i class="text-white fa-solid fa-trash"></i>
+                        </div>
+                    </a>
+                    <img class="card-img-top" src="../../assets/img/iphone.jfif">
+            
+                    <div class="card-body">
+                        
+                      
+                      <h5 class="card-title">I Phone</h5>
+                      <h6 class="text-danger" >LKR 30000</h6>
+                      <p class="card-text ">LKR 50000</p>
+                      <a [routerLink]="'Product-details/'" class="btn btn-primary">Details</a>
+                    </div>
+                </div>    
+
+        </div>
+
+    </div> -->
+    

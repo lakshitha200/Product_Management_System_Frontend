@@ -1,0 +1,159 @@
+/* Products */
+.products a{
+    text-decoration: none;
+    color: #000;
+}
+.products p{
+    line-height: 1rem;
+}
+.card{
+    background-color: #000;
+}
+.card-body{
+    padding-top: 7px !important;
+
+}
+.offer{
+    font-size: 14px;
+    font-weight: 600;
+    background-color: rgb(255, 155, 6);
+}
+.card-title{
+    font-weight: bold !important;
+}
+.strike{
+    text-decoration: line-through ;
+    font-size: 12px;
+}
+
+
+
+.details-banner .blcak-box{
+    display: flex;
+    padding: 20px 10px 10px;
+    background-color: #000;
+}
+.details-banner .blcak-box div{
+    width: 50%;
+    padding-left: 10px;
+    text-align: center;
+}
+.product .search-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product .search-bar input{
+    height: 40px;
+    width: 70%;
+}
+.product .addnew .btn-primary{
+    background-color: #5729ce;
+    border: none;
+}
+.product .addnew .btn-primary:hover{
+    background-color: #391691;
+}
+.product-list{
+    padding-left: 10px;
+    width: 100%;
+    padding-bottom: 20px;
+}
+.product-list .products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.product-list .card{
+    width: 19%;
+    margin-top: 5px;
+    border: 1px solid rgb(185, 185, 185);
+}
+.product-list .card:hover{
+    transform: scale(1.03);
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.card-title{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.product-list .card .trash{
+    background-color: #000000;
+    font-size: 14px;
+    cursor: pointer;
+}
+.product-list .card .trash:hover{
+    background-color: #ff0000;
+}
+
+
+.card-body .btn-primary{
+    background-color: #5729ce !important;
+    border:none;
+}
+.card-body .btn-primary:hover{
+    background-color: #391691;
+}
+.lightGreen{
+    color: #61de2a;
+}
+
+.hide{
+    display: none;
+}
+
+@media screen and (max-width:1100px) {
+    .product-list .card{
+        width: 24%;
+
+    }
+}
+
+
+@media screen and (max-width:930px) {
+    .product-list .card{
+        width: 32%;
+
+    }
+    
+}
+
+@media screen and (max-width:650px) {
+    .product-list .card{
+        width: 48%;
+    }
+    .products{
+        justify-content: space-around;
+        margin-right: 20px;
+    }
+    .card-title{
+        font-size: 11px;
+        font-weight: 600;
+    }
+    h6{
+        font-size: 14px;
+    }
+    .card-text{
+        font-size: 11px;
+    }
+
+   
+}
+@media screen and (max-width:450px) {
+    .details-banner .blcak-box div p{
+        font-size: 12px !important;
+    }
+    .addnew a{
+        font-size: 13px !important;
+    }
+    .product .search-bar input{
+        width: 70%;
+        height: 30px;
+    }
+    .btn-dark{
+        font-size: 12px;
+    }
+}
+

@@ -1,0 +1,60 @@
+.boldLable {
+    font-weight:500;
+}
+
+.container{
+    min-height: 87.7vh;
+}
+
+form{
+    box-shadow: 1px 2px 5px 3px #dadada;
+    border-radius: 10px !important;
+}
+
+input,select{
+    margin-top: 5px;
+}
+
+.btn-primary{
+    background-color: #5729ce;
+    outline: none;
+    border: none;
+}
+.btn-primary:hover{
+    background-color: #3b1e86;
+}
+
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+ 
+}
+
+.btn-danger{
+    background-color:red;
+}
+.btn-danger:hover{
+    background-color:rgb(150, 3, 3);
+}
+.btn-success{
+    background-color:green;
+}
+.btn-success:hover{
+    background-color:rgb(2, 78, 2);
+}
+
+/* Images */
+.result-box{
+    margin-top: 4px;
+    background-color: rgb(206, 206, 206);
+    border-radius: 20px;
+    padding: 3px 13px;
+}
+.results{
+    width: 100%;
+    font-size: 13px;
+}
+.results i{
+    cursor: pointer;
+    margin-left: 6px;
+
+}

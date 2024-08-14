@@ -1,0 +1,28 @@
+
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+ 
+}
+
+
+
+.btn-danger{
+    background-color:red;
+}
+.btn-danger:hover{
+    background-color:rgb(150, 3, 3);
+}
+.btn-success{
+    background-color:green;
+}
+.btn-success:hover{
+    background-color:rgb(2, 78, 2);
+}
+
+@media screen and (max-width:565px) {
+    .d-flex{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px !important;
+    }
+}
